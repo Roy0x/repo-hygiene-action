@@ -11,7 +11,8 @@
   "scripts": {
     "build": "tsc",
     "package": "ncc build src/index.ts -o dist",
-    "all": "npm run build && npm run package"
+    "all": "npm run build && npm run package",
+    "test": "npm run build && node --test lib/test/triageIssue.test.js lib/test/checkPrTitle.test.js lib/test/auditPrDiff.test.js"
   },
   "dependencies": {
     "@actions/core": "^1.11.1",

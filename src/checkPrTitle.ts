@@ -53,17 +53,13 @@ export function validatePrTitle(title: string, allowedTypes: string[]): TitleVal
     };
   }
 
-  const description = groups.description.trim();
-  if (!description) {
-    return { ok: false, reason: 'The description after ": " is empty.' };
-  }
-
   return {
     ok: true,
     type,
     scope: groups.scope?.trim(),
     breaking: Boolean(groups.breaking),
-    description,
+    // The pattern already guarantees a non-empty, trimmed description.
+    description: groups.description.trim(),
   };
 }
 

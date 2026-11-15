@@ -118,7 +118,8 @@ A single marker-tagged comment lists the file, line, pattern, and a short snippe
 
 ```bash
 npm install
-npm run build    # type-check and compile src/ to lib/
+npm run build    # type-check and compile src/ and test/ to lib/
+npm test         # compile, then run the node:test suite
 npm run package  # bundle src/index.ts into dist/index.js with ncc
 npm run all      # build + package
 ```
