@@ -1,0 +1,25 @@
+{
+  "name": "repo-hygiene-action",
+  "version": "1.0.0",
+  "description": "GitHub Action that triages issues, validates Conventional Commit pull request titles, and audits PR diffs for debug leftovers and secrets.",
+  "private": true,
+  "main": "dist/index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "package": "ncc build src/index.ts -o dist",
+    "all": "npm run build && npm run package"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@vercel/ncc": "^0.38.1",
+    "typescript": "^5.5.4"
+  }
+}

@@ -1,0 +1,52 @@
+name: 'Repo Hygiene Action'
+description: 'Automatically triage issues, enforce Conventional Commit PR titles, and audit PR diffs for debug leftovers and hard-coded secrets.'
+author: 'Repo Hygiene Action contributors'
+
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  github-token:
+    description: 'Token used for Octokit API calls. Needs `issues: write` and `pull-requests: write` permissions.'
+    required: true
+    default: ${{ github.token }}
+
+  enable-issue-triage:
+    description: 'Apply keyword-based labels and post a welcome comment for first-time contributors on issue events.'
+    required: false
+    default: 'true'
+
+  enable-pr-title-check:
+    description: 'Validate pull request titles against the Conventional Commits format.'
+    required: false
+    default: 'true'
+
+  enable-pr-audit:
+    description: 'Scan added PR lines for leftover `console.log`, `debugger;`, `TODO:` markers and hard-coded credentials.'
+    required: false
+    default: 'true'
+
+  allowed-pr-types:
+    description: 'Comma-separated list of allowed Conventional Commit types for PR titles.'
+    required: false
+    default: 'feat,fix,docs,style,refactor,perf,test,build,ci,chore,revert'
+
+  fail-on-audit:
+    description: 'When "true", audit findings fail the workflow run instead of only posting a warning comment.'
+    required: false
+    default: 'false'
+
+outputs:
+  labels-applied:
+    description: 'Comma-separated list of labels applied to the issue (empty when nothing matched).'
+
+  pr-title-valid:
+    description: 'Whether the pull request title passed validation: "true" or "false".'
+
+  audit-findings:
+    description: 'Number of audit findings detected in the added lines of the pull request.'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
