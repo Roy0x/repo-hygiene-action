@@ -55,7 +55,18 @@ describe('validatePrTitle', () => {
   });
 
   it('ships the documented default types', () => {
-    assert.equal(DEFAULT_PR_TYPES.length, 11);
-    assert.deepEqual(DEFAULT_PR_TYPES.slice(0, 3), ['feat', 'fix', 'docs']);
+    assert.deepEqual(DEFAULT_PR_TYPES, [
+      'feat',
+      'fix',
+      'docs',
+      'style',
+      'refactor',
+      'perf',
+      'test',
+      'build',
+      'ci',
+      'chore',
+      'revert',
+    ]);
   });
 });

@@ -1,6 +1,3 @@
-# Normalize every text file to LF in the repository and in working trees,
-# so a Windows checkout does not rewrite the committed bundle.
+# Keep every text file LF in the repository and in working trees, so a Windows
+# checkout cannot rewrite the committed action bundle (dist/index.js) to CRLF.
 * text=auto eol=lf
-
-# The action runs this exact bundle; keep it LF and never treat it as binary.
-dist/index.js text eol=lf
