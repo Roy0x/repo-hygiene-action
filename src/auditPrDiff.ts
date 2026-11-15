@@ -235,7 +235,7 @@ export function buildAuditComment(result: AuditResult, failOnAudit: boolean): st
   return lines.join('\n');
 }
 
-async function postSummaryComment(
+export async function postSummaryComment(
   octokit: Octokit,
   owner: string,
   repo: string,

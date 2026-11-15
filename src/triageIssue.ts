@@ -63,7 +63,7 @@ export function isFirstTimeContributor(authorAssociation: string | undefined): b
   return authorAssociation !== undefined && FIRST_TIME_ASSOCIATIONS.has(authorAssociation.toUpperCase());
 }
 
-async function ensureLabelsExist(
+export async function ensureLabelsExist(
   octokit: Octokit,
   owner: string,
   repo: string,
