@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js 20](https://img.shields.io/badge/node-20.x-brightgreen.svg)](package.json)
 [![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6.svg)](tsconfig.json)
-[![CI workflow](https://img.shields.io/badge/CI-workflow-lightgrey.svg)](.github/workflows/ci.yml)
+[![CI](https://github.com/Roy0x/repo-hygiene-action/actions/workflows/ci.yml/badge.svg)](https://github.com/Roy0x/repo-hygiene-action/actions/workflows/ci.yml)
 
 A single, dependency-light GitHub Action that keeps a repository tidy:
 
@@ -139,7 +139,6 @@ Use this once, when standing the action up in its own repository.
 - [ ] Create the GitHub repository and push `main`, including the committed `dist/index.js`.
 - [ ] Keep `main` as the default branch: the `CI` workflow runs on push to `main` or `master`.
 - [ ] Check the **Actions** tab: the `CI` workflow passes its build, test, and bundle-freshness jobs.
-- [ ] Optionally add a live status badge now that the repository path is known.
 - [ ] Open a test pull request with a valid title such as `feat: try the action`, confirm the audit comment appears, then push a `console.log(` line to see a finding.
 - [ ] Open a test issue containing "crash" from a first-time contributor account and confirm the `bug` label and welcome comment.
 - [ ] Open a pull request from a fork and confirm the run warns instead of failing when its token is read-only.
