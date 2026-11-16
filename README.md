@@ -1,11 +1,9 @@
 # Repo Hygiene Action
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Node.js 20](https://img.shields.io/badge/node-20.x-brightgreen.svg)](https://nodejs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6.svg)](https://www.typescriptlang.org)
-
-<!-- After publishing, replace OWNER/REPO in the CI badge URL above with your repository. -->
+[![Node.js 20](https://img.shields.io/badge/node-20.x-brightgreen.svg)](package.json)
+[![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6.svg)](tsconfig.json)
+[![CI workflow](https://img.shields.io/badge/CI-workflow-lightgrey.svg)](.github/workflows/ci.yml)
 
 A single, dependency-light GitHub Action that keeps a repository tidy:
 
@@ -133,6 +131,29 @@ npm run all
 git add dist/index.js
 git commit -m "chore: rebuild dist"
 ```
+
+## Publishing checklist
+
+Use this once, when standing the action up in its own repository.
+
+- [ ] Create the GitHub repository and push `main`, including the committed `dist/index.js`.
+- [ ] Keep `main` as the default branch: the `CI` workflow runs on push to `main` or `master`.
+- [ ] Check the **Actions** tab: the `CI` workflow passes its build, test, and bundle-freshness jobs.
+- [ ] Optionally add a live status badge now that the repository path is known.
+- [ ] Open a test pull request with a valid title such as `feat: try the action`, confirm the audit comment appears, then push a `console.log(` line to see a finding.
+- [ ] Open a test issue containing "crash" from a first-time contributor account and confirm the `bug` label and welcome comment.
+- [ ] Open a pull request from a fork and confirm the run warns instead of failing when its token is read-only.
+- [ ] Tag and push the first release:
+
+  ```bash
+  git tag -a v1.0.0 -m "v1.0.0"
+  git tag -a v1 -m "v1"
+  git push origin main --tags
+  ```
+
+- [ ] Point a consumer workflow at `uses: <owner>/<repo>@v1` and run it once to confirm permissions.
+
+> Tags are mutable; pin a commit SHA instead of `v1` if you need an immutable reference.
 
 ## License
 
